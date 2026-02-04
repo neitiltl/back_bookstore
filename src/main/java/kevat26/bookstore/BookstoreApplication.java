@@ -23,16 +23,12 @@ public class BookstoreApplication {
 	public CommandLineRunner bookDemo(BookRepository bookRepository) {
 		return (args) -> {
 			log.info("save books");
-			bookRepository.save(new Book("Hömppää hempeille", "Jaakko Virtanen", 1925, "978-0-7432-7356-5", 12.99));
-			bookRepository.save(new Book("Mättöä machoille", "Jatta Korhonen", 1960, "978-0-06-112008-4", 14.99));
-			bookRepository.save(new Book("Taattua laatua", "Jaska Jokunen", 1948, "978-0-452-28423-4", 13.99));
+			bookRepository.save(new Book("Hömppää hempeille", "Jaakko Virtanen", "1925", "978-0-7432-7356-5", "12.99"));
+			bookRepository.save(new Book("Mättöä machoille", "Jatta Korhonen", "1960", "978-0-06-112008-4", "14.99"));
+			bookRepository.save(new Book("Taattua laatua", "Jaska Jokunen", "1948", "978-0-452-28423-4", "13.99"));
 
 			log.info("fetch all books");
 			for (Book book : bookRepository.findAll()) {
-				log.info(book.toString());
-			}
-			log.info("fetch books by author Jaska Jokunen");
-			for (Book book : bookRepository.findByAuthor("Jaska Jokunen")) {
 				log.info(book.toString());
 			}
 
