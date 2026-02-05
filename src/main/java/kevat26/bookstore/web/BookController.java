@@ -5,13 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import kevat26.bookstore.domain.Book;
 import kevat26.bookstore.domain.BookRepository;
 
 @Controller
-
 public class BookController {
 
     private BookRepository bookRepository;
@@ -64,12 +61,22 @@ public class BookController {
 }
 
 /*
- * Edit Bookstore
- * Add edit functionality to your bookstore. Create edit link after delete link
- * to your listpage. Edit link will open current book in the edit page.
+ * Bookstore: One-to-many
+ * Use your own bookstore application from the GitHub.
  * 
- * Tip. Check ‘Add book’-functionality from the controller. In add functionality
- * you added new book object to model but now you will add current book object
- * to model. You also have to send current book id from the list page to
- * controller (like you did in delete link).
+ * Check StudentList example from the moodle (Student – Department
+ * relationship).
+ * 
+ * Add new entity called Category which has attributes id and name
+ * Add one-to-many relationship between Book and Category
+ * Add new category attribute to the Book entity
+ * Add new books attribute to the Category entity (List of books)
+ * Add getters and setters for new attributes
+ * Add annotations for one-to-many relationship
+ * Add crud repository class for the Category entity
+ * Add Category dropdown list to the book creation form
+ * Add categories to controller model
+ * Show category name in the dropdown list
+ * Add Category into book listpage to show category name of the book
+ * Insert few categories to database by using CommandLineRunner
  */
