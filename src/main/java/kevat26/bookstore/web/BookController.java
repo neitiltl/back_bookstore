@@ -5,17 +5,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import kevat26.bookstore.domain.Book;
 import kevat26.bookstore.domain.BookRepository;
+import kevat26.bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+    private final CategoryRepository categoryRepository;
 
     // constructor injection, only one constructor!
-    public BookController(BookRepository bookRepository) {
+    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository) {
         this.bookRepository = bookRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @GetMapping("/index")
@@ -37,6 +41,7 @@ public class BookController {
     @GetMapping("/addBook")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 
@@ -55,6 +60,7 @@ public class BookController {
     @GetMapping("/editBook/{id}")
     public String editBook(@PathVariable("id") Long bookId, Model model) {
         model.addAttribute("book", bookRepository.findById(bookId));
+        model.addAttribute("categories", categoryRepository.findAll());
         return "editbook";
     }
 
